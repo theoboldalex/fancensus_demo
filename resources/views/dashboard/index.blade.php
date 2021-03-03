@@ -43,9 +43,13 @@
                         <a href="">
                             <i class="far fa-edit"></i>
                         </a>
-                        <a href="">
-                            <i class="far fa-trash-alt ml-8"></i>
-                        </a>
+                        <form action="{{ route('delete_link', $link->id) }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button type="submit"
+                                <i class="far fa-trash-alt ml-8"></i>
+                            </button>
+                        </form>
                     </div>
                 </div>
                 <hr class="my-4">

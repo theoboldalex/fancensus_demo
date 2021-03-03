@@ -29,4 +29,11 @@ class DashboardController extends Controller
 
         return redirect()->route('dashboard', auth()->id());
     }
+
+    public function destroy($id)
+    {
+        Link::destroy($id);
+
+        return redirect()->route('dashboard', auth()->id());
+    }
 }
