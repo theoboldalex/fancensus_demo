@@ -24,6 +24,6 @@ class LoginController extends Controller
             return back();
         }
 
-        return redirect()->route('home');
+        return redirect()->route('dashboard', auth()->id());
     }
 }

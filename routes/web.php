@@ -22,7 +22,10 @@ use App\Http\Controllers\Auth\RegisterController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // DASHBOARD
-Route::get('/dashboard/{id}', [DashboardController::class, 'index'])->name('dashboard');
+Route::group(['prefix' => '/dashboard'], function() {
+    Route::get('/{id}', [DashboardController::class, 'index'])->name('dashboard');
+    Route::post('/{id}', [DashboardController::class, 'store']);
+});
 
 // AUTH
 Route::group(['prefix' => '/auth'], function() {

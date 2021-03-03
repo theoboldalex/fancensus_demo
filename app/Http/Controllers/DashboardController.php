@@ -10,4 +10,12 @@ class DashboardController extends Controller
     {
         return view('dashboard.index');
     }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'link_name' => 'required',
+            'link_url' => 'required|url'
+        ]);
+    }
 }
