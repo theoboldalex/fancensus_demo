@@ -22,5 +22,5 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // AUTH
 Route::group(['prefix' => '/auth'], function() {
     Route::get('/register', [RegisterController::class, 'index'])->name('register');
-    Route::get('/login', [LoginController::class, 'index'])->name('Login');
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
 });
