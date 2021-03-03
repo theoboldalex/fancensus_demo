@@ -3,7 +3,7 @@
         <h1 class="font-semibold text-2xl"><span class="text-blue-400"><a href="{{ route('home') }}">µ</span>Link</a></h1>
         <div class="flex">
             @auth
-                <a href="" class="hover:opacity-70 transition duration-300 ease">Dashboard</a>
+                <a href="{{ route('dashboard', auth()->user()->id) }}" class="hover:opacity-70 transition duration-300 ease">Dashboard</a>
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button type="submit" class="ml-8 hover:opacity-70 transition duration-300 ease">Logout</button>    
