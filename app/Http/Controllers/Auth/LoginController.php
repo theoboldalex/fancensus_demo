@@ -11,4 +11,19 @@ class LoginController extends Controller
     {
         return view('auth.login');
     }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+
+        if (!auth()->attempt($request->only('email', 'password')))
+        {
+            return back();
+        }
+
+        return redirect()->route('home');
+    }
 }
