@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserLinksController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -35,3 +36,6 @@ Route::group(['prefix' => '/auth'], function() {
     Route::post('/login', [LoginController::class, 'store']);
     Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 });
+
+// SHAREABLE LINK
+Route::get('/{id}', [UserLinksController::class])->name('my_link');

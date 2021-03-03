@@ -5,13 +5,18 @@
         <h1 class="font-semibold text-3xl">Hello, {{ Str::before(auth()->user()->email, '@') }}!</h1>
         <div class="my-4">
             <label for="unique_url">Here is your unique, shareable URL.</label>
-            <input type="text" value="hello" disabled class="p-2 border rounded-lg w-full my-4">
+            <div class="relative">
+                <input type="text" value="hello" class="p-2 border rounded-lg w-full my-4" id="copyUrlText" readonly>
+                <button>
+                    <i class="far fa-copy absolute right-0 top-0 mt-7 mr-4 opacity-50" id="copyUrlBtn"></i>
+                </button>
+            </div>
         </div>
 
-        <div class="border bg-gray-200 rounded-lg my-6 shadow p-6">
+        <div class="border bg-gray-200 rounded-lg my-4 shadow p-6">
             <h1 class="font-semibold text-3xl my-4">Create a Link</h1>
 
-            <form action="" method="POST" class="font-light">
+            <form action="{{ route('dashboard', auth()->id())}}" method="POST" class="font-light">
                 @csrf
                 <div class="w-full md:flex justify-between">
                     <div class="flex flex-col md:w-6/12 md:mr-4 my-4">
@@ -26,5 +31,43 @@
                 <button type="submit" class="w-full my-4 rounded-lg text-white font-light py-2 px-4 bg-blue-400 hover:bg-blue-500 transition duration-300 ease">Save Link</button>
             </form>
         </div>
+        <div>
+            <h1 class="font-semibold text-3xl">Your Links</h1>
+
+            <hr class="my-4">
+            <div class="md:flex justify-between">
+                @foreach ($links as $link)
+                    <p>{{ $link->link_name }}</p>
+                    <p>{{ $link->link_url }}</p>
+                    <div class="flex hover:opacity-70 transition duration-300 ease">
+                        <a href="">
+                            <i class="far fa-edit"></i>
+                        </a>
+                        <a href="">
+                            <i class="far fa-trash-alt ml-8"></i>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+            <hr class="my-4">
+        </div>
     </div>
+
+    <script>
+        const copyUrlBtn = document.querySelector('#copyUrlBtn');
+        
+        copyUrlBtn.addEventListener('click', copyUrl);
+
+        function copyUrl() {
+            const copyUrlText = document.querySelector('#copyUrlText');
+            copyUrlText.focus();
+            copyUrlText.select();
+
+            try {
+                document.execCommand('copy');
+            } catch (err) {
+                console.error(err);
+            }
+        }
+    </script>
 @endsection
