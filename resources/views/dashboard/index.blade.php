@@ -6,7 +6,7 @@
         <div class="my-4">
             <label for="unique_url">Here is your unique, shareable URL.</label>
             <div class="relative">
-                <input type="text" value="hello" class="p-2 border rounded-lg w-full my-4" id="copyUrlText" readonly>
+                <input type="text" value="{{ config('app.url') }}/{{ auth()->id() }}" class="p-2 border rounded-lg w-full my-4" id="copyUrlText" readonly>
                 <button>
                     <i class="far fa-copy absolute right-0 top-0 mt-7 mr-4 opacity-50" id="copyUrlBtn"></i>
                 </button>
@@ -35,8 +35,8 @@
             <h1 class="font-semibold text-3xl">Your Links</h1>
 
             <hr class="my-4">
-            <div class="md:flex justify-between">
-                @foreach ($links as $link)
+            @foreach ($links as $link)
+                <div class="md:flex justify-between">
                     <p>{{ $link->link_name }}</p>
                     <p>{{ $link->link_url }}</p>
                     <div class="flex hover:opacity-70 transition duration-300 ease">
@@ -47,9 +47,9 @@
                             <i class="far fa-trash-alt ml-8"></i>
                         </a>
                     </div>
+                </div>
+                <hr class="my-4">
                 @endforeach
-            </div>
-            <hr class="my-4">
         </div>
     </div>
 

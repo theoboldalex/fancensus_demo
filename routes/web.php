@@ -38,4 +38,4 @@ Route::group(['prefix' => '/auth'], function() {
 });
 
 // SHAREABLE LINK
-Route::get('/{id}', [UserLinksController::class])->name('my_link');
+Route::get('/{id}', [UserLinksController::class, 'show'])->name('my_link');
