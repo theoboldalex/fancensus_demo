@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,4 +16,11 @@ use App\Http\Controllers\HomeController;
 |
 */
 
+// HOME
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// AUTH
+Route::group(['prefix' => '/auth'], function() {
+    Route::get('/register', [RegisterController::class, 'index'])->name('register');
+    Route::get('/login', [LoginController::class, 'index'])->name('Login');
+});
