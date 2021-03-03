@@ -4,7 +4,7 @@
         <div class="flex">
             @auth
                 <a href="" class="hover:opacity-70 transition duration-300 ease">Dashboard</a>
-                <form action="">
+                <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button type="submit" class="ml-8 hover:opacity-70 transition duration-300 ease">Logout</button>    
                 </form> 
