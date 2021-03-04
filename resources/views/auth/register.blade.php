@@ -6,7 +6,7 @@
             <div class="w-full md:w-6/12 bg-gray-200 rounded-lg shadow p-8">
                 <h1 class="font-semibold text-3xl">Register</h1>
 
-                <form action="" method="POST" class="font-light py-4">
+                <form action="{{ route('register') }}" method="POST" class="font-light py-4">
                     @csrf
                     <div class="flex flex-col my-4">
                         <label for="email">Email:</label>
