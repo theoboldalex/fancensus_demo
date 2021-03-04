@@ -6,7 +6,7 @@
         <div class="my-4">
             <label for="unique_url">Here is your unique, shareable URL.</label>
             <div class="relative">
-                <input type="text" value="{{ config('app.url') }}/{{ auth()->id() }}" class="p-2 border rounded-lg w-full my-4" id="copyUrlText" readonly>
+                <input type="text" value="{{ config('app.url') }}{{ auth()->id() }}" class="p-2 border rounded-lg w-full my-4" id="copyUrlText" readonly>
                 <button>
                     <i class="far fa-copy absolute right-0 top-0 mt-7 mr-4 opacity-50" id="copyUrlBtn"></i>
                 </button>
