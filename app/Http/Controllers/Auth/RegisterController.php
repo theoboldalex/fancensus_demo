@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -22,6 +23,7 @@ class RegisterController extends Controller
         ]);
 
         $user = User::create([
+            'username' => Str::before($request->email, '@'),
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);

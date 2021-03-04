@@ -21,7 +21,7 @@ class LoginController extends Controller
 
         if (!auth()->attempt($request->only('email', 'password')))
         {
-            return back();
+            return back()->with('status', 'Invalid Credentials');
         }
 
         return redirect()->route('dashboard', auth()->id());

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="mx-4 md:mx-40 my-4 md:mx-10">
-        <h1 class="font-semibold text-3xl">Hello, {{ Str::before(auth()->user()->email, '@') }}!</h1>
+        <h1 class="font-semibold text-3xl">Hello, {{ auth()->user()->username }}!</h1>
         <div class="my-4">
             <label for="unique_url">Here is your unique, shareable URL.</label>
             <div class="relative">
