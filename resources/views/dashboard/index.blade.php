@@ -40,7 +40,7 @@
                     <p>{{ $link->link_name }}</p>
                     <p>{{ $link->link_url }}</p>
                     <div class="flex hover:opacity-70 transition duration-300 ease">
-                        <a href="">
+                        <a href="{{ route('edit_link', $link->id) }}">
                             <i class="far fa-edit"></i>
                         </a>
                         <form action="{{ route('delete_link', $link->id) }}" method="post">

@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+    }
+
     public function index()
     {
         return view('dashboard.index', [
@@ -33,6 +38,30 @@ class DashboardController extends Controller
     public function destroy($id)
     {
         Link::destroy($id);
+
+        return redirect()->route('dashboard', auth()->id());
+    }
+
+    public function edit($id)
+    {
+        $link = Link::where('id', $id)->first();
+
+        return view('dashboard.edit', [
+            'link' => $link
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'link_name' => 'required',
+            'link_url' => 'required|url'
+        ]);
+
+        $updated_link = Link::where('id', $id)->update([
+            'link_name' => $request->link_name,
+            'link_url' => $request->link_url
+        ]);
 
         return redirect()->route('dashboard', auth()->id());
     }
