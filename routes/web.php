@@ -23,7 +23,7 @@ use App\Http\Controllers\Auth\RegisterController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // DASHBOARD
-Route::group(['prefix' => '/dashboard'], function() {
+Route::group(['middleware' => 'auth', 'prefix' => '/dashboard'], function() {
     Route::delete('/delete/{id}', [DashboardController::class, 'destroy'])->name('delete_link');
     Route::get('/edit/{id}', [DashboardController::class, 'edit'])->name('edit_link');
     Route::put('/edit/{id}', [DashboardController::class, 'update']);
