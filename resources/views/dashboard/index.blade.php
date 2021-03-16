@@ -47,14 +47,14 @@
                 <div class="md:flex justify-between">
                     <p>{{ $link->link_name }}</p>
                     <p>{{ $link->link_url }}</p>
-                    <div class="flex hover:opacity-70 transition duration-300 ease">
-                        <a href="{{ route('edit_link', $link->id) }}">
+                    <div class="flex">
+                        <a href="{{ route('edit_link', $link->id) }}" class="hover:opacity-70 transition duration-300 ease-in-out">
                             <i class="far fa-edit"></i>
                         </a>
                         <form action="{{ route('delete_link', $link->id) }}" method="post">
                             @csrf
                             @method('delete')
-                            <button type="submit"
+                            <button type="submit" class="hover:opacity-70 transition duration-300 ease-in-out">
                                 <i class="far fa-trash-alt ml-8"></i>
                             </button>
                         </form>
@@ -67,7 +67,7 @@
 
     <script>
         const copyUrlBtn = document.querySelector('#copyUrlBtn');
-        
+
         copyUrlBtn.addEventListener('click', copyUrl);
 
         function copyUrl() {
