@@ -43,28 +43,30 @@
             <h1 class="font-semibold text-3xl">Your Links</h1>
 
             <hr class="my-4">
-            @foreach ($links as $link)
-                <div class="md:flex justify-between">
-                    <p>{{ $link->link_name }}</p>
-                    <p>{{ $link->link_url }}</p>
-                    <div class="flex">
-                        <a href="{{ route('edit_link', $link->id) }}" class="hover:opacity-70 transition duration-300 ease-in-out">
-                            <i class="far fa-edit"></i>
-                        </a>
-                        <form action="{{ route('delete_link', $link->id) }}" method="post">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="hover:opacity-70 transition duration-300 ease-in-out">
-                                <i class="far fa-trash-alt ml-8"></i>
-                            </button>
-                        </form>
-                        <a href="" class="hover:opacity-70 transition duration-300 ease-in-out">
-                            <i class="fas fa-arrows-alt ml-8"></i>
-                        </a>
-                    </div>
-                </div>
-                <hr class="my-4">
+            <ul>
+                @foreach ($links as $link)
+                    <li class="md:flex justify-between" draggable="true" ondragend="dragEnd()" ondragover="dragOver(event)" ondragstart="dragStart(event)">
+                        <p>{{ $link->link_name }}</p>
+                        <p>{{ $link->link_url }}</p>
+                        <div class="flex">
+                            <a href="{{ route('edit_link', $link->id) }}" class="hover:opacity-70 transition duration-300 ease-in-out">
+                                <i class="far fa-edit"></i>
+                            </a>
+                            <form action="{{ route('delete_link', $link->id) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="hover:opacity-70 transition duration-300 ease-in-out">
+                                    <i class="far fa-trash-alt ml-8"></i>
+                                </button>
+                            </form>
+                            <a href="" class="hover:opacity-70 transition duration-300 ease-in-out">
+                                <i class="fas fa-arrows-alt ml-8"></i>
+                            </a>
+                        </div>
+                    </li>
+                    <hr class="my-4">
                 @endforeach
+            </ul>
         </div>
     </div>
 
