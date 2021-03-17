@@ -58,6 +58,9 @@
                                 <i class="far fa-trash-alt ml-8"></i>
                             </button>
                         </form>
+                        <a href="" class="hover:opacity-70 transition duration-300 ease-in-out">
+                            <i class="fas fa-arrows-alt ml-8"></i>
+                        </a>
                     </div>
                 </div>
                 <hr class="my-4">
@@ -65,21 +68,6 @@
         </div>
     </div>
 
-    <script>
-        const copyUrlBtn = document.querySelector('#copyUrlBtn');
-
-        copyUrlBtn.addEventListener('click', copyUrl);
-
-        function copyUrl() {
-            const copyUrlText = document.querySelector('#copyUrlText');
-            copyUrlText.focus();
-            copyUrlText.select();
-
-            try {
-                document.execCommand('copy');
-            } catch (err) {
-                console.error(err);
-            }
-        }
-    </script>
+    <script src="{{ asset('js/copyUrl.js') }}"></script>
+    <script src="{{ asset('js/dragAndDrop.js') }}"></script>
 @endsection
