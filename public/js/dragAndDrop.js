@@ -1,7 +1,9 @@
 let selected = null;
 
 const dragStart = (e) => {
-
+    e.dataTransfer.effectAllowed = 'move'
+    e.dataTransfer.setData('text/plain', null)
+    selected = e.target
 }
 
 const dragOver = (e) => {
