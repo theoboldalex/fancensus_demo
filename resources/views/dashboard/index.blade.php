@@ -71,5 +71,5 @@
     </div>
 
     <script src="{{ asset('js/copyUrl.js') }}"></script>
-    <script src="{{ asset('js/dragAndDrop.js') }}"></script>
+{{--    <script src="{{ asset('js/dragAndDrop.js') }}"></script>--}}
 @endsection
