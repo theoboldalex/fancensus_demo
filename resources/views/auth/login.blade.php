@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="mx-4 md:mx-40 my-6 md:my-20">
-        <div class="flex justify-center">
+        <div class="flex justify-center" id="alert">
             @if (session('status'))
                 <div class="w-6/12 py-2 border border-red-500 rounded-lg bg-red-200 text-red-800 text-center my-4">
                     {{ session('status') }}
@@ -37,4 +37,11 @@
             </div>
         </div>
     </div>
+    <script>
+        const alert = document.querySelector('#alert');
+
+        setTimeout(() => {
+            alert.style.display = "none";
+        }, 5000)
+    </script>
 @endsection
