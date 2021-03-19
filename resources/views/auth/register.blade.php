@@ -10,21 +10,21 @@
                     @csrf
                     <div class="flex flex-col my-4">
                         <label for="email">Email:</label>
-                        <input type="email" name="email" class="border rounded-lg p-2 @error('email') border-red-500 @enderror" value="{{ old('email') }}">
+                        <input type="email" name="email" class="border rounded-lg p-2 @error('email') border-red-500 @enderror"  placeholder="joe_bloggs@email.com" value="{{ old('email') }}">
                         @error('email')
                             <small class="text-red-500">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="flex flex-col my-4">
                         <label for="password">Password:</label>
-                        <input type="password" name="password" class="border rounded-lg p-2 @error('password') border-red-500 @enderror">
+                        <input type="password" name="password" class="border rounded-lg p-2 @error('password') border-red-500 @enderror" placeholder="********">
                         @error('password')
                             <small class="text-red-500">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="flex flex-col my-4">
                         <label for="password_confirmation">Confirm Password:</label>
-                        <input type="password" name="password_confirmation" class="border rounded-lg p-2">
+                        <input type="password" name="password_confirmation" class="border rounded-lg p-2" placeholder="********">
                     </div>
                     <button type="submit" class="py-2 px-4 bg-blue-400 text-white hover:bg-blue-500 transition duration-300 ease rounded-lg w-full font-light">Register</button>
                 </form>
